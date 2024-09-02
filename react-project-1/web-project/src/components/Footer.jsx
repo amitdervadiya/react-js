@@ -1,4 +1,5 @@
 import React from 'react'
+import logo1 from './photos/logo-1-1.png'
 
 export default function Footer() {
   return (
@@ -8,7 +9,7 @@ export default function Footer() {
             <div className="row pb-4 white-color">
                 <div className="col-lg-3 col-md-6 col-sm-6">
                  
-                    <a href="index.html"><img src="/logo2.svg" alt="Logo"/></a>
+                    <a href="index.html"><img src={logo1} alt="Logo" className='logo' /></a>
                     <p>Lorem Ipsum is simply dummy text
                         of the printing and typesetting
                         industry when an unknown
