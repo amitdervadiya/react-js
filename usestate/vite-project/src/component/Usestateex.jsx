@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 export default function Usestateex() {
@@ -6,6 +6,9 @@ export default function Usestateex() {
     const increase = () => {
         setCount(count + 1)
     }
+    useEffect(() => {
+        prompt('you clicked' + { count } + 'time')
+    }, [count])
     const decrease = () => {
         setCount(count - 1)
     }
