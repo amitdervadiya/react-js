@@ -12,13 +12,11 @@ function App() {
 
   return (
     <>
-      {/* <Component first={"amit"} second={"papudi"} third={"sakriyo"}></Component>
-      <div className="container"> */}
-      {/* <Text  />
-      
-        </div> */}
-        {/* <Darkmode/> */}
-<Class />
+      <Component first={"amit"} second={"papudi"} third={"sakriyo"}></Component>
+      <div className="container">
+        <Text />
+      </div>  <Darkmode />
+      <Class />
     </>
   )
 }
