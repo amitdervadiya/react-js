@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './App.css';
 
-
 const top100Films = [
   { label: 'The Shawshank Redemption', year: 1994 },
   { label: 'The Godfather', year: 1972 },
@@ -13,11 +12,14 @@ const top100Films = [
 function App() {
   const [formData, setFormData] = useState({
     password: '',
+    firstname: '',
+    lastname: '',
     email: '',
   });
 
   const inputRef = useRef(null);
 
+  // Focus on firstname when the form loads
   useEffect(() => {
     inputRef.current.focus();
   }, []);
@@ -36,11 +38,27 @@ function App() {
     <div className='container'>
       <form onSubmit={handleSubmit}>
         <input
+          type="text"
+          name="firstname"
+          placeholder="firstname"
+          value={formData.firstname}
+          ref={inputRef} // Ref applied only to the firstname field
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="lastname"
+          placeholder="lastname"
+          value={formData.lastname}
+          onChange={handleChange}
+          required
+        />
+        <input
           type="email"
           name="email"
           placeholder="Email"
           value={formData.email}
-          ref={inputRef}
           onChange={handleChange}
           required
         />
@@ -52,8 +70,6 @@ function App() {
           onChange={handleChange}
           required
         />
-
-
 
         <button type="submit">Submit</button>
       </form>
