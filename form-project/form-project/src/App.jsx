@@ -1,22 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
 import './App.css';
 
+
+const top100Films = [
+  { label: 'The Shawshank Redemption', year: 1994 },
+  { label: 'The Godfather', year: 1972 },
+  { label: 'The Dark Knight', year: 2008 },
+  { label: '12 Angry Men', year: 1957 },
+  // Add more options here
+];
+
 function App() {
   const [formData, setFormData] = useState({
-    name: '',
-    lastName: '',
-    age: '',
+    password: '',
     email: '',
-    feedback: ''
   });
-  // const [rgb, setRgb] = useState()
-  // const rgb1 = () => {
-  //   setRgb(
-  //     {
-  //       container
-  //     }
-  //   )
-  // }
 
   const inputRef = useRef(null);
 
@@ -38,45 +36,25 @@ function App() {
     <div className='container'>
       <form onSubmit={handleSubmit}>
         <input
-          type="text"
-          name="name"
-          placeholder="First Name"
-          value={formData.name}
-          onChange={handleChange}
-          ref={inputRef}
-          required
-        />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={formData.lastName}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="number"
-          name="age"
-          placeholder="Age"
-          value={formData.age}
-          onChange={handleChange}
-          required
-        />
-        <input
           type="email"
           name="email"
           placeholder="Email"
           value={formData.email}
+          ref={inputRef}
           onChange={handleChange}
           required
         />
-        <textarea
-          name="feedback"
-          placeholder="Your Feedback"
-          value={formData.feedback}
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
           onChange={handleChange}
           required
         />
+
+
+
         <button type="submit">Submit</button>
       </form>
     </div>
