@@ -16,8 +16,12 @@ function App() {
     lastname: '',
     email: '',
   });
-
+ 
   const inputRef = useRef(null);
+  const inputRef1 = useRef(null);
+  const inputRef2 = useRef(null);
+  const inputRef3 = useRef(null);
+
 
   // Focus on firstname when the form loads
   useEffect(() => {
@@ -32,6 +36,13 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+    let nm= inputRef.current.value
+    let nm1= inputRef1.current.value
+    let nm2= inputRef2.current.value
+    let nm3= inputRef3.current.value
+
+    alert("info submitted \n"+nm+"\n"+nm1+"\n"+nm2+"\n"+"*****")
+
   };
 
   return (
@@ -53,8 +64,10 @@ function App() {
           value={formData.lastname}
           onChange={handleChange}
           required
+          ref={inputRef1} 
         />
         <input
+        ref={inputRef2} 
           type="email"
           name="email"
           placeholder="Email"
@@ -63,6 +76,7 @@ function App() {
           required
         />
         <input
+        ref={inputRef3} 
           type="password"
           name="password"
           placeholder="Password"
