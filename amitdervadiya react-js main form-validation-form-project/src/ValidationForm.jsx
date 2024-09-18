@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React from 'react'
 import { useState } from 'react'
 
@@ -49,4 +47,3 @@ export default function ValidationForm() {
         </div>
     )
 }
->>>>>>> 78a6fa0a465de999f6373018cc10e71d10c8f073
