@@ -8,7 +8,7 @@ function App() {
   const [name, setName] = useState('')
   const [age, setAge] = useState('')
   const [subject, setSubject] = useState('')
-  const [record, setRecord] = useState('')
+  const [record, setRecord] = useState([])
 
 
 
@@ -17,14 +17,14 @@ function App() {
     console.log(name, age, subject)
     let obj = { id: Date.now(), name, age, subject }
     record.push(obj)
-    localStorage.setItem("student", JSON.stringify([record]))
+    localStorage.setItem("student", JSON.stringify(record))
 
   }
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("student")) || []
     setRecord(data)
 
-  }, [handleadd])
+  },[])
 
   return (
     <>
