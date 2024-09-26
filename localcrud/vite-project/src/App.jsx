@@ -7,39 +7,47 @@ function App() {
   const [age, setAge] = useState('')
   const [subject, setSubject] = useState('')
   const [record, setRecord] = useState([])
+  const [editid, setEditId] = useState()
 
   let handleadd = () => {
     console.log(name, age, subject)
     let obj = { id: record.length + 1, name, age, subject }
     let data = JSON.parse(localStorage.getItem("student")) || []
-    // setRecorddata(data)
-    setRecord(data)
-    record.push(obj)
-    localStorage.setItem("student", JSON.stringify(record))
+
+    if (editid) {
+      let singledata = record.find((item) => item.id == editid)
+      singledata.name = name
+      singledata.age = age
+      singledata.subject = subject
+      localStorage.setItem("student", JSON.stringify(singledata))
+      setEditId(null)
+    }
+    else {
+      let obj = { id: record.length + 1, name, age, subject }
+      data.push(obj)
+      setRecord(data)
+      localStorage.setItem("student", JSON.stringify(data))
+
+    }
     setName('')
     setAge('')
     setSubject('')
-
   }
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("student")) || []
-    // setRecorddata(data)
     setRecord(data)
-  }, [handleadd])
+  }, [])
   let handledelete = (id) => {
     let deletedata = record.filter((item) => item.id !== id)
     setRecord(deletedata)
     localStorage.setItem("student", JSON.stringify(deletedata))
   }
   let handledit = (id) => {
-    let  editdata = record.find((item) => item.id == id)
+    let editdata = record.find((item) => item.id == id)
     setName(editdata.name)
     setAge(editdata.age);
     setSubject(editdata.subject);
     setEditId(id);
-
-
-
   }
 
   return (
@@ -47,7 +55,7 @@ function App() {
       <input type="text" placeholder='name' value={name} onChange={(e) => setName(e.target.value)} />
       <input type="text" placeholder='age' value={age} onChange={(e) => setAge(e.target.value)} />
       <input type="text" placeholder='subject' value={subject} onChange={(e) => setSubject(e.target.value)} />
-      <button onClick={handleadd}> add</button>
+      <button onClick={handleadd}>{editid ? 'update' : 'add'}</button>
 
       <table style={{ width: '500px', border: '1px solid black', }}>
         <thead>
@@ -58,7 +66,7 @@ function App() {
         </thead>
         <tbody>
           {
-            record ? record.map((e, i) => {
+            record.length > 0 ? record.map((e, i) => {
               return <tr key={i}>
                 <td>{e.id}</td>
                 <td>{e.name}</td>
