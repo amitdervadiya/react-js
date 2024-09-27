@@ -1,88 +1,99 @@
-import { useEffect, useState } from 'react'
-import './App.css'
 
-function App() {
+import React, { useEffect, useState } from 'react'
 
-  const [name, setName] = useState('')
-  const [age, setAge] = useState('')
-  const [subject, setSubject] = useState('')
-  const [record, setRecord] = useState([])
-  const [editid, setEditId] = useState()
+export default function App() {
+    
+    const [name,setName]=useState('')
+    const [sub,setSub]=useState('')
 
-  let handleadd = () => {
-    console.log(name, age, subject)
-    let obj = { id: record.length + 1, name, age, subject }
-    let data = JSON.parse(localStorage.getItem("student")) || []
+    const [data,setData]=useState([])
+    const [index,setIndex]=useState()
+  
+    useEffect(()=>{
+      let oldData = JSON.parse(localStorage.getItem("student"))||[]
+      setData(oldData)
+    },[])
 
-    if (editid) {
-      let singledata = record.find((item) => item.id == editid)
-      singledata.name = name
-      singledata.age = age
-      singledata.subject = subject
-      localStorage.setItem("student", JSON.stringify(singledata))
-      setEditId(null)
+
+    let handleclick = ()=>{
+      
+      let newStudent = {id:Date.now(),name:name,sub:sub}
+      let oldData = JSON.parse(localStorage.getItem("student"))||[]
+      if(index){
+         let updataData = data.find((e)=>e.id == index)
+         console.log(updataData);
+         
+         updataData.id = index
+         updataData.name = name
+         updataData.sub = sub
+         localStorage.setItem("student",JSON.stringify(oldData))
+         setIndex(null)
+
+
+      }
+      else{
+        oldData.push(newStudent)  
+      localStorage.setItem("student",JSON.stringify(oldData))
+      setData(oldData)
+      }
+      console.log(oldData);
+      
+
     }
-    else {
-      let obj = { id: record.length + 1, name, age, subject }
-      data.push(obj)
-      setRecord(data)
-      localStorage.setItem("student", JSON.stringify(data))
 
-    }
-    setName('')
-    setAge('')
-    setSubject('')
+  let handleDelete = (id)=>{
+    let oldData = JSON.parse(localStorage.getItem("student"))||[]
+    oldData =oldData.filter((e)=> e.id != id )
+    localStorage.setItem("student",JSON.stringify(oldData))
+    setData(oldData)
   }
-  useEffect(() => {
-    let data = JSON.parse(localStorage.getItem("student")) || []
-    setRecord(data)
-  }, [])
-  let handledelete = (id) => {
-    let deletedata = record.filter((item) => item.id !== id)
-    setRecord(deletedata)
-    localStorage.setItem("student", JSON.stringify(deletedata))
-  }
-  let handledit = (id) => {
-    let editdata = record.find((item) => item.id == id)
+
+  let handleEdit = (id)=>{
+    let oldData = JSON.parse(localStorage.getItem("student"))||[]
+    let editdata = oldData.find((e)=> e.id == id)
+    console.log(editdata)
+    setIndex(id)
     setName(editdata.name)
-    setAge(editdata.age);
-    setSubject(editdata.subject);
-    setEditId(id);
+    setSub(editdata.sub)
+
   }
-
   return (
-    <>
-      <input type="text" placeholder='name' value={name} onChange={(e) => setName(e.target.value)} />
-      <input type="text" placeholder='age' value={age} onChange={(e) => setAge(e.target.value)} />
-      <input type="text" placeholder='subject' value={subject} onChange={(e) => setSubject(e.target.value)} />
-      <button onClick={handleadd}>{editid ? 'update' : 'add'}</button>
-
-      <table style={{ width: '500px', border: '1px solid black', }}>
+    <div>
+      <input type="text" value={name} placeholder='name' onChange={(e)=>setName(e.target.value)} />
+      <input type="text" value={sub} placeholder='subject' onChange={(e)=>setSub(e.target.value)}/>
+      <button onClick={handleclick} >{index?"update":"addData"}</button>
+      <table border={2} width={1000} >
         <thead>
           <th>id</th>
           <th>name</th>
-          <th>age</th>
-          <th>subject</th>
+          <th>sub</th>
+          <th colSpan={2}>Action</th>
         </thead>
         <tbody>
-          {
-            record.length > 0 ? record.map((e, i) => {
-              return <tr key={i}>
-                <td>{e.id}</td>
-                <td>{e.name}</td>
-                <td>{e.age}</td>
-                <td>{e.subject}</td>
-                <td colSpan={2}> <button onClick={() => handledit(e.id)}>edit</button> <button onClick={() => handledelete(e.id)}>delete</button></td>
-              </tr>
-            })
-              : "loading"
-          }
+
+          {data ? data.map((e,i)=>{
+            return <tr key={i}>
+              <td>{e.id}</td>  
+              <td>{e.name}</td>
+              <td>{e.sub}</td>
+              <td colSpan={2}>
+                <button color='green' onClick={()=>handleEdit(e.id)}>Edit</button>
+                <button color='red' onClick={()=>handleDelete(e.id)}>Del</button>
+              </td>
+
+            </tr>
+          }):(
+            <tr>
+                <td colSpan="3">No data available</td>
+            </tr>
+        )
+        }
         </tbody>
-      </table >
+      </table>
+      
+        
 
-    </>
+
+    </div>
   )
-
 }
-
-export default App
