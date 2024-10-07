@@ -1,0 +1,105 @@
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #1f1f2e;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.home-container {
+  padding: 40px;
+  text-align: center;
+}
+
+.nav-links {
+  margin-bottom: 20px;
+}
+
+.styled-link1 {
+  background-color: #e94560;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.styled-link1:hover {
+  background-color:green;
+  transform: scale(1.05);
+}
+.styled-link2 {
+  background-color: #e94560;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.styled-link2:hover {
+  background-color:yellow;
+  color: black;
+  transform: scale(1.05);
+}
+.styled-link3 {
+  background-color: #e94560;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.styled-link3:hover {
+  background-color:red;
+  transform: scale(1.05);
+}
+
+.data-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #16213e;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+}
+
+.card h3, .card p {
+  margin: 10px 0;
+}
+
+/* Keyframes for subtle hover animations */
+@keyframes cardPop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.card:hover {
+  animation: cardPop 0.5s ease;
+}
