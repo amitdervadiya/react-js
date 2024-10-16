@@ -16,11 +16,15 @@ export const counter = createSlice({
 
         },
         updatedata: (state, action) => {
-            const { id, name, age } = action.payload;
-            const existingStudent = state.students.find(student => student.id === id);
+            const { id, name, age , gender, isChecked } = action.payload;
+            const existingStudent = state.students.find((student) => student.id === id);
             if (existingStudent) {
                 existingStudent.name = name;
                 existingStudent.age = age;
+                existingStudent.gender = gender;
+                existingStudent.isChecked = isChecked;
+                
+
             }
         }
     }
