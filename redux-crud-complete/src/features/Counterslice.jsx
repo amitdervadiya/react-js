@@ -12,19 +12,18 @@ export const counter = createSlice({
         },
         deletedata: (state, action) => {
 
-            state.students = state.students.filter((item) => item.id != action.payload.id);
+            state.students = state.students.filter((item) => item.id != action.payload);
 
         },
         updatedata: (state, action) => {
-            const { id, name, age , gender, isChecked } = action.payload;
+            const { id, name, age, gender, isChecked, Priorty } = action.payload;
             const existingStudent = state.students.find((student) => student.id === id);
             if (existingStudent) {
                 existingStudent.name = name;
                 existingStudent.age = age;
                 existingStudent.gender = gender;
                 existingStudent.isChecked = isChecked;
-                
-
+                existingStudent.Priorty = Priorty;
             }
         }
     }
