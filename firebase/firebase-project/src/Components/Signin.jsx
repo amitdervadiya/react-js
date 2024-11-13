@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 
 export default function Signin() {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
     const handlesubmit = async (e) => {
         e.preventDefault();
-        setError(''); 
+        setError('');
         if (email && password) {
             try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 console.log(userCredential);
-
-              
-                navigate('/signup'); 
+                navigate('/home');
             } catch (err) {
                 console.error('Error signing in:', err.message);
                 setError('Invalid email or password.');

@@ -1,34 +1,54 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, db } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import { doc, setDoc } from 'firebase/firestore';
 
 export default function Signup() {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [city, setCity] = useState('');
+    const [hobby, setHobby] = useState('');
+    const [name, setName] = useState('');
 
-    const handlesubmit = async (e) => {
+
+
+    const handlesubmit = (e) => {
         e.preventDefault();
-        setError(''); 
-        if (email && password) {
-            try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                console.log(userCredential);
+        if (email && city && password && hobby && name){
 
-              
-                navigate('/home'); 
-            } catch (err) {
-                console.error('Error signing in:', err.message);
-                setError('Invalid email or password.');
-            }
+        
+            createUserWithEmailAndPassword(auth, email, password).then(data => {
+                setDoc(doc(db, "users", data.user.uid), {
+                    name: name,
+                    city: city,
+                    hobby: hobby,
+                    email: email
+                })
+                navigate('/home')
+            })
         }
     };
+  const home = ()=>{
+  }
+
+
 
     return (
+
         <div style={{ maxWidth: '300px', margin: 'auto', padding: '20px', textAlign: 'center' }}>
             <form onSubmit={handlesubmit}>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        style={{ display: 'block', margin: '10px 0', width: '100%', padding: '8px' }}
+                    />
+                </div>
                 <div>
                     <input
                         type="email"
@@ -49,10 +69,30 @@ export default function Signup() {
                         style={{ display: 'block', margin: '10px 0', width: '100%', padding: '8px' }}
                     />
                 </div>
-                <button type="submit" style={{ padding: '10px 15px', cursor: 'pointer' }}>
-                    Sign In
+                <div>
+                    <input
+                        type="text"
+                        placeholder="City"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        required
+                        style={{ display: 'block', margin: '10px 0', width: '100%', padding: '8px' }}
+                    />
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Hobby"
+                        value={hobby}
+                        onChange={(e) => setHobby(e.target.value)}
+                        required
+                        style={{ display: 'block', margin: '10px 0', width: '100%', padding: '8px' }}
+                    />
+                </div>
+                <button type="submit" style={{ padding: '10px 15px', cursor: 'pointer' }} onClick={home}> 
+                    Sign up
                 </button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+
             </form>
         </div>
     );
