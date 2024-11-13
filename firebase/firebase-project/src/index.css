@@ -1,0 +1,28 @@
+body {
+    background: linear-gradient(135deg, #007bff, #00c851);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-card {
+    max-width: 400px;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+}
+
+.signup-btn {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.signup-btn:hover {
+    background-color: #0056b3;
+}
+
+.signup-btn:focus {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
