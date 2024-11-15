@@ -18,7 +18,8 @@ function App() {
           <Route path="/" element={<Signup />} />
 
 
-        </Routes></BrowserRouter>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
