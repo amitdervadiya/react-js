@@ -126,27 +126,40 @@ export default function Home() {
             </div>
 
 
-            <div className="w-100" style={{ maxWidth: '600px' }}>
-                <h4 className="text-center mb-4">Your Tasks</h4>
-                {taskList.length > 0 ? (
-                    taskList.map((task, index) => (
-                        <div key={index} className="card mb-3 shadow-sm">
-                            <div className="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5 className="card-title">{task.task}</h5>
-                                    <p className="card-text text-muted">
-                                        Priority: <strong>{task.priority}</strong>
-                                    </p>
-                                    <button onClick={() => handleDelete(task.id)}>delete</button>
-                                    <button onClick={() => handleUpdate(task.id)}>edit</button>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <p className="text-center text-muted">No tasks found.</p>
-                )}
-            </div>
+            <div className="w-100" style={{ maxWidth: '600px', margin: 'auto' }}>
+  <h4 className="text-center mb-4">Your Tasks</h4>
+  {taskList.length > 0 ? (
+    taskList.map((task, index) => (
+      <div key={index} className="card mb-4 shadow-sm border-0 rounded-3 task-card">
+        <div className="card-body d-flex justify-content-between align-items-center">
+          <div>
+            <h5 className="card-title text-dark mb-2">{task.task}</h5>
+            <p className="card-text text-muted mb-3">
+              Priority: <strong className="text-primary">{task.priority}</strong>
+            </p>
+          </div>
+          <div className="d-flex gap-2">
+            <button
+              onClick={() => handleUpdate(task.id)}
+              className="btn btn-outline-info btn-sm edit-btn"
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => handleDelete(task.id)}
+              className="btn btn-outline-danger btn-sm delete-btn"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    ))
+  ) : (
+    <p className="text-center text-muted">No tasks found.</p>
+  )}
+</div>
+
         </div>
     );
 }

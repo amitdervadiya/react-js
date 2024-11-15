@@ -26,3 +26,28 @@
 .signup-btn:focus {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+.task-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f8f9fa;
+  }
+  
+  .task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    transition: all 0.2s ease;
+  }
+  
+  .edit-btn:hover {
+    background-color: #17a2b8;
+    color: #fff;
+  }
+  
+  .delete-btn:hover {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
