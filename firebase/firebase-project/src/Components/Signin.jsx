@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import TextField from '@mui/material/TextField';
+
 
 export default function Signin() {
     const navigate = useNavigate();
@@ -14,15 +15,12 @@ export default function Signin() {
         e.preventDefault();
         setError('');
         if (email && password) {
-            try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                console.log(userCredential);
-                navigate('/home');
-            } catch (err) {
-                console.error('Error signing in:', err.message);
-                setError('Invalid email or password.');
-            }
-        } else {
+
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            console.log(userCredential);
+            navigate('/home');
+        }
+        else {
             setError('Please fill in all fields.');
         }
     };
@@ -35,26 +33,30 @@ export default function Signin() {
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label className="form-label">Email</label>
-                        <input
+                        <TextField id="standard-basic" label="Enter your email" variant="standard"
                             type="email"
                             className="form-control"
-                            placeholder="Enter your email"
+
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
+
                         />
+
                     </div>
 
                     <div className="mb-4">
                         <label className="form-label">Password</label>
-                        <input
+                        <TextField id="standard-basic" label="Enter your password" variant="standard"
                             type="password"
                             className="form-control"
-                            placeholder="Enter your password"
+
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
+
                         />
+
                     </div>
 
                     <button type="submit" className="btn btn-primary w-100">

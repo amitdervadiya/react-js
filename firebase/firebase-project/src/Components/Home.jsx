@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import TextField from '@mui/material/TextField';
+
 
 export default function Home() {
     const navigate = useNavigate();
@@ -71,11 +72,11 @@ export default function Home() {
         navigate('/signin');
     };
     const handleDelete = async (id) => {
-            
-            await deleteDoc(doc(db, "Todos", id));
-            let filterData = taskList.filter((e) => e.id !== id)
-            setTaskList(filterData);
-      
+
+        await deleteDoc(doc(db, "Todos", id));
+        let filterData = taskList.filter((e) => e.id !== id)
+        setTaskList(filterData);
+
     }
     const handleUpdate = async (id) => {
         let edit = taskList.find(item => (item.id == id))
@@ -99,23 +100,23 @@ export default function Home() {
                             : 'Please sign in to access your account.'}
                     </p>
                     <div className="mb-4">
-                        <input
+                        <TextField id="outlined-basic" label="Enter task" variant="outlined"
                             type="text"
                             value={task}
                             onChange={(e) => setTask(e.target.value)}
-                            placeholder="Enter task"
+
                             className="form-control mb-3"
                         />
-                        <input
+                        <TextField id="outlined-basic" label="Enter priority" variant="outlined"
                             type="text"
                             value={priority}
                             onChange={(e) => setPriority(e.target.value)}
-                            placeholder="Enter priority"
+
                             className="form-control mb-3"
                         />
                         <button className="btn btn-primary w-100 mb-2" onClick={handleTask} >
                             {
-            index == null ? "add task" : "update task"
+                                index == null ? "Add task" : "Update task"
                             }
                         </button>
                         <button className="btn btn-secondary w-100" onClick={handleSignup}>
@@ -127,39 +128,42 @@ export default function Home() {
 
 
             <div className="w-100" style={{ maxWidth: '600px', margin: 'auto' }}>
-  <h4 className="text-center mb-4">Your Tasks</h4>
-  {taskList.length > 0 ? (
-    taskList.map((task, index) => (
-      <div key={index} className="card mb-4 shadow-sm border-0 rounded-3 task-card">
-        <div className="card-body d-flex justify-content-between align-items-center">
-          <div>
-            <h5 className="card-title text-dark mb-2">{task.task}</h5>
-            <p className="card-text text-muted mb-3">
-              Priority: <strong className="text-primary">{task.priority}</strong>
-            </p>
-          </div>
-          <div className="d-flex gap-2">
-            <button
-              onClick={() => handleUpdate(task.id)}
-              className="btn btn-outline-info btn-sm edit-btn"
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => handleDelete(task.id)}
-              className="btn btn-outline-danger btn-sm delete-btn"
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      </div>
-    ))
-  ) : (
+                <h4 className="text-center mb-4">Your Tasks</h4>
+                {taskList.length > 0 ? (
+    taskList.map((task, index) => {
+        return (
+            <div key={index} className="card mb-4 shadow-sm border-0 rounded-3 task-card">
+                <div className="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 className="card-title text-dark mb-2">{task.task}</h5>
+                        <p className="card-text text-muted mb-3">
+                            Priority: <strong className="text-primary">{task.priority}</strong>
+                        </p>
+                    </div>
+                    <div className="d-flex gap-2">
+                        <button
+                            onClick={() => handleUpdate(task.id)}
+                            className="btn btn-outline-info btn-sm edit-btn"
+                        >
+                            Edit
+                        </button>
+                        <button
+                            onClick={() => handleDelete(task.id)}
+                            className="btn btn-outline-danger btn-sm delete-btn"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    })
+) : (
     <p className="text-center text-muted">No tasks found.</p>
-  )}
-</div>
+)}
 
         </div>
+
+        </div >
     );
 }

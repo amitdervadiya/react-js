@@ -3,7 +3,10 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { doc, setDoc } from 'firebase/firestore';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import TextField from '@mui/material/TextField';
+
+
+
 
 export default function Signup() {
     const navigate = useNavigate();
@@ -18,20 +21,17 @@ export default function Signup() {
         e.preventDefault();
         setError('');
         if (email && city && password && hobby && name) {
-            try {
-                const data = await createUserWithEmailAndPassword(auth, email, password);
-                await setDoc(doc(db, 'users', data.user.uid), {
-                    name,
-                    city,
-                    hobby,
-                    email,
-                });
-                navigate('/home');
-            } catch (error) {
-                console.error('Error signing up:', error);
-                setError('Failed to sign up. Please try again.');
-            }
-        } else {
+
+            const data = await createUserWithEmailAndPassword(auth, email, password);
+            await setDoc(doc(db, 'users', data.user.uid), {
+                name,
+                city,
+                hobby,
+                email,
+            });
+            navigate('/home');
+        }
+        else {
             setError('Please fill in all fields.');
         }
     };
@@ -48,64 +48,46 @@ export default function Signup() {
                 )}
 
                 <form onSubmit={handleSubmit}>
+
+
                     <div className="mb-3">
                         <label className="form-label">Name</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Enter your name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                        />
+                        <TextField id="filled-basic" label="Enter your name" variant="filled" className='form-control' value={name}
+                            onChange={(e) => setName(e.target.value)} type='text'
+                            required />
                     </div>
 
                     <div className="mb-3">
                         <label className="form-label">Email</label>
-                        <input
-                            type="email"
-                            className="form-control"
-                            placeholder="Enter your email"
-                            value={email}
+                        <TextField id="filled-basic" label="Enter your email" variant="filled" className='form-control' value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
+                            required />
+
                     </div>
 
                     <div className="mb-3">
+
                         <label className="form-label">Password</label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Enter your password"
-                            value={password}
+                        <TextField id="filled-basic" label="Enter your password" variant="filled" className='form-control' value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
+                            required />
                     </div>
 
                     <div className="mb-3">
+
                         <label className="form-label">City</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Enter your city"
-                            value={city}
+                        <TextField id="filled-basic" label="Enter your city" variant="filled" className='form-control' value={city}
                             onChange={(e) => setCity(e.target.value)}
-                            required
-                        />
+                            required />
+
                     </div>
 
                     <div className="mb-4">
                         <label className="form-label">Hobby</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Enter your hobby"
-                            value={hobby}
+                        <TextField id="filled-basic" label="Enter your hobby" variant="filled" className='form-control' value={hobby}
                             onChange={(e) => setHobby(e.target.value)}
-                            required
-                        />
+                            required />
+
                     </div>
 
                     <button type="submit" className="btn btn-primary w-100 mb-3">
