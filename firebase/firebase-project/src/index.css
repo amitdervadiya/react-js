@@ -51,3 +51,6 @@
     color: #fff;
   }
   
+.slide{
+ overflow-y: auto;
+}

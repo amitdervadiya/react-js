@@ -5,9 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { doc, setDoc } from 'firebase/firestore';
 import TextField from '@mui/material/TextField';
 
-
-
-
 export default function Signup() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');

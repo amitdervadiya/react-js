@@ -41,10 +41,10 @@ export default function Home() {
 
     const fetchUserTasks = async () => {
         if (user) {
-            const querySnapshot = await getDocs(collection(db, "Todos"));
-            const fetchData = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+            const Snapshot = await getDocs(collection(db, "Todos"));
+            const fetchData = Snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
             setTaskList(fetchData);
-        }
+        } uu
     };
 
     const handleTask = async () => {
@@ -53,6 +53,7 @@ export default function Home() {
 
             await addDoc(collection(db, 'Todos'), obj)
                 .then((data) => {
+                    console.log(data.data())
                     setTaskList(...taskList, obj)
                 })
 
@@ -87,7 +88,7 @@ export default function Home() {
 
     }
     return (
-        <div className="container vh-100 d-flex flex-column align-items-center justify-content-center">
+        <div className="container vh-100 d-flex flex-column align-items-center justify-content-center mt-5">
 
             <div className="card shadow-lg mb-5 p-4" style={{ maxWidth: '600px', width: '100%' }}>
                 <div className="card-body text-center">
@@ -127,42 +128,44 @@ export default function Home() {
             </div>
 
 
-            <div className="w-100" style={{ maxWidth: '600px', margin: 'auto' }}>
+            <div className="w-100 slide" style={{ maxWidth: '600px', margin: 'auto' }} >
                 <h4 className="text-center mb-4">Your Tasks</h4>
-                {taskList.length > 0 ? (
-    taskList.map((task, index) => {
-        return (
-            <div key={index} className="card mb-4 shadow-sm border-0 rounded-3 task-card">
-                <div className="card-body d-flex justify-content-between align-items-center">
-                    <div>
-                        <h5 className="card-title text-dark mb-2">{task.task}</h5>
-                        <p className="card-text text-muted mb-3">
-                            Priority: <strong className="text-primary">{task.priority}</strong>
-                        </p>
-                    </div>
-                    <div className="d-flex gap-2">
-                        <button
-                            onClick={() => handleUpdate(task.id)}
-                            className="btn btn-outline-info btn-sm edit-btn"
-                        >
-                            Edit
-                        </button>
-                        <button
-                            onClick={() => handleDelete(task.id)}
-                            className="btn btn-outline-danger btn-sm delete-btn"
-                        >
-                            Delete
-                        </button>
-                    </div>
-                </div>
-            </div>
-        );
-    })
-) : (
-    <p className="text-center text-muted">No tasks found.</p>
-)}
+                {
+                    taskList.length > 0 ?
 
-        </div>
+                        taskList.filter((e) => user.uid == e.userid).map((task, index) => {
+
+                            return <div key={index} className="card mb-4 shadow-sm border-0 rounded-3 task-card ">
+                                <div className="card-body d-flex justify-content-between align-items-center ">
+                                    <div>
+                                        <h5 className="card-title text-dark mb-2">{task.task}</h5>
+                                        <p className="card-text text-muted mb-3">
+                                            Priority: <strong className="text-primary">{task.priority}</strong>
+                                        </p>
+                                    </div>
+                                    <div className="d-flex gap-2">
+                                        <button
+                                            onClick={() => handleUpdate(task.id)}
+                                            className="btn btn-outline-info btn-sm edit-btn"
+                                        >
+                                            Edit
+                                        </button>
+                                        <button
+                                            onClick={() => handleDelete(task.id)}
+                                            className="btn btn-outline-danger btn-sm delete-btn"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        })
+                        : (
+                            <p className="text-center text-muted">No tasks found.</p>
+                        )
+                }
+
+            </div>
 
         </div >
     );
