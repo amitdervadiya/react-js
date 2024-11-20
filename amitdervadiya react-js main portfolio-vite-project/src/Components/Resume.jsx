@@ -20,13 +20,13 @@ export default function Resume() {
       <div className="container r-1">
         <div className="row menu">
           {/* Left Side - Menu */}
-          <div className="col-lg-5 col-md-6 rr-1">
+          <div className="col-lg-5 col-md-12  rr-1">
             <h1 className="heading-1">Why hire me?</h1>
             <p className="text-white">
-              Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit.
+              Lorem ipsum dolor sit amet  consectetur <br />adipisicing elit.
             </p>
             <div className="boxes">
-              <div className="box-1"  onClick={() => setSelectedComponent('One')}>Experience</div>
+              <div className="box-1" onClick={() => setSelectedComponent('One')}>Experience</div>
               <div className="box-2" onClick={() => setSelectedComponent('Two')}>
                 Education
               </div>
@@ -40,7 +40,7 @@ export default function Resume() {
           </div>
 
           {/* Right Side - Content Display */}
-          <div className="col-lg-7 col-md-6 rr-2" style={{ border: '1px solid white' }}>
+          <div className="col-lg-7 col-md-12 rr-2" style={{ border: '1px solid white' }}>
             {selectedComponent === 'One' && <One />}
             {selectedComponent === 'Two' && <Two />}
             {selectedComponent === 'Three' && <Three />}
