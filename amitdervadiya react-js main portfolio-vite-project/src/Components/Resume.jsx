@@ -20,7 +20,7 @@ export default function Resume() {
       <div className="container r-1">
         <div className="row menu">
           {/* Left Side - Menu */}
-          <div className="col-lg-5 col-md-12  rr-1">
+          <div className="col-lg-4 col-md-12  rr-1">
             <h1 className="heading-1">Why hire me?</h1>
             <p className="text-white">
               Lorem ipsum dolor sit amet  consectetur <br />adipisicing elit.
@@ -40,7 +40,7 @@ export default function Resume() {
           </div>
 
           {/* Right Side - Content Display */}
-          <div className="col-lg-7 col-md-12 rr-2" style={{ border: '1px solid white' }}>
+          <div className="col-lg-8 col-md-12 rr-2" style={{ border: '1px solid white' }}>
             {selectedComponent === 'One' && <One />}
             {selectedComponent === 'Two' && <Two />}
             {selectedComponent === 'Three' && <Three />}
