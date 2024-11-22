@@ -1,155 +1,142 @@
-/* Dashboard.css */
-.dashboard-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #4caf50, #8bc34a);
-    font-family: 'Arial', sans-serif;
+.signin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  font-family: Arial, sans-serif;
 }
+
+.signin-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.signin-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.login-button,
+.google-signin-button {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 0.5rem;
+}
+
+.login-button {
+  background: #4caf50;
+}
+
+.login-button:hover {
+  background: #43a047;
+}
+
+.google-signin-button {
+  background: #db4437;
+}
+
+.google-signin-button:hover {
+  background: #c33d30;
+}
+
+
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+}
+
 
 .welcome-card {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    animation: fadeIn 0.5s ease-in-out;
+  background: #fff;
+  color: #333;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.welcome-card h1 {
-    color: #333333;
-    font-size: 24px;
-    margin-bottom: 15px;
+.welcome-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.3);
 }
+
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #1e3c72;
+}
+
 
 .user-info {
-    margin-top: 20px;
+  margin-top: 1rem;
 }
 
-.user-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid #4caf50;
-    margin-bottom: 15px;
+.user-greeting {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #555;
 }
 
-.user-info h2 {
-    color: #4caf50;
-    font-size: 20px;
-}
-
-/* Add a fade-in animation for better visuals */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-    .welcome-card {
-        padding: 20px;
-    }
+  .welcome-card {
+    padding: 1.5rem;
+  }
 
-    .user-photo {
-        width: 80px;
-        height: 80px;
-    }
+  .dashboard-title {
+    font-size: 1.8rem;
+  }
 
-    .welcome-card h1 {
-        font-size: 20px;
-    }
-
-    .user-info h2 {
-        font-size: 18px;
-    }
+  .user-greeting {
+    font-size: 1.2rem;
+  }
 }
-/* Signin.css */
-.signin-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #4caf50, #8bc34a);
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .signin-form {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 100%;
-    max-width: 400px;
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  .signin-title {
-    font-size: 24px;
-    color: #333333;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .input-group {
-    margin-bottom: 20px;
-  }
-  
-  .input-group label {
-    display: block;
-    font-size: 14px;
-    color: #555555;
-    margin-bottom: 5px;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-  }
-  
-  .input-group input:focus {
-    border-color: #4caf50;
-    outline: none;
-  }
-  
-  .google-signin-button {
-    width: 100%;
-    background-color: #4285f4;
-    color: #ffffff;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .google-signin-button:hover {
-    background-color: #3367d6;
-  }
-  
-  /* Add fade-in animation for better visuals */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
