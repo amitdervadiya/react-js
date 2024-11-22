@@ -12,11 +12,7 @@ export default function Dashboard() {
       <div className="welcome-card">
         <h1>Welcome to the Dashboard!</h1>
         <div className="user-info">
-          <img
-            src={location.state?.photo} 
-            alt="User"
-            className="user-photo"
-          />
+         
           <h2>{location.state.name ? `Hello, ${location.state.name}!` : "Hello, User!"}</h2>
         </div>
       </div>
