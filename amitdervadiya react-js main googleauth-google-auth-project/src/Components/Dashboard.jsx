@@ -14,7 +14,6 @@ export default function Dashboard() {
           <h2 className="user-greeting">
             {location.state?.name ? `Hello, ${location.state.name}!` : "Hello, User!"}
           </h2>
-
         </div>
       </div>
     </div>

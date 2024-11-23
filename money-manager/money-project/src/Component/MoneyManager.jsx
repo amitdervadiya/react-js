@@ -30,7 +30,7 @@ export default function MoneyManager() {
 
       <div className="deposit-section">
         <div className="balance-display">
-          {moneydata && <span>{moneydata.budget || 0}</span>}
+          {moneydata && <span style={moneydata.budget < 0 ? {color:'red'} : {color:'white'}}>{moneydata.budget || 0}</span>}
         </div>
         <input
           type="number"
@@ -72,12 +72,12 @@ export default function MoneyManager() {
           </thead>
           <tbody>
             {expenseview &&
-              expenseview.storemoney.map((e, i) => (
-                <tr key={i}>
+              expenseview.storemoney.map((e, i) => {
+           return      <tr key={i}>
                   <td>&#8377;{e.expensedata}</td>
                   <td>{e.expensedetail}</td>
                 </tr>
-              ))}
+            })}
           </tbody>
         </table>
       </div>

@@ -4,7 +4,7 @@ export default function One() {
   return (
     <div>
       <div className="col-lg-12 col-md-12 rr-2 col-sm-12">
-        <h1 className='heading-2'>My Education</h1>
+        <h1 className='heading-2'>My Experince</h1>
         <p className='text-white'>
           Lorem ipsum dolor sit amet consectetur adipisicie
           autem  <br />impedit, asperiores, eumo illum possimus!
