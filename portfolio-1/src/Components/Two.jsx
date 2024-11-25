@@ -13,14 +13,14 @@ export default function Two() {
 
                     <div className="col-lg-12 col-md-6 col-sm-6 e-1">
                         <div className="details1 ">
-                            <span className='year'>2023</span>
-                            <h2 className='web-1'>certified web <br />developer</h2>
-                            <span className='e-detail'>  <p>Red & white Institute</p> </span>
+                            <span className='year'>2021-2023</span>
+                            <h2 className='web-1'>higher secondry<br />school</h2>
+                            <span className='e-detail'>  <p>sgv school</p> </span>
 
                         </div>
                         <div className="details1 ">
-                            <span className='year'>2023</span>
-                            <h2 className='web-1'>certified web <br />developer</h2>
+                            <span className='year'>2024</span>
+                            <h2 className='web-1'>front-end</h2>
                             <span className='e-detail'>  <p>Red & white Institute</p> </span>
 
                         </div>

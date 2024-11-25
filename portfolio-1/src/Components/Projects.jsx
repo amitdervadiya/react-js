@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navbar1 from './Navbar1';
+
 import thumb1 from './photos/logo2.png';
 import thumb2 from './photos/logo3.png';
 import thumb3 from './photos/logo4.png';
