@@ -27,8 +27,10 @@ export default function Contact() {
                                 <option value="">backend development</option>
                                 <option value="">fullstack development</option>
                             </select>
-                            <textarea name="" id="message" className='focus1'></textarea>
-                            <button className='send '>send</button>
+                            <textarea name="" id="message" className='focus1' alt="message" placeholder='message'>
+                          
+                            </textarea>
+                            <button className='send'>send</button>
                         </div>
 
                     </div>

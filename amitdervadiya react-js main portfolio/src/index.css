@@ -280,7 +280,7 @@ background-color: black;
 
 .c2 {
    background-color: #27272c;
-   padding: 0px 15px;
+   padding:  30px;
    height:fit-content;
 }
 .input-row{
@@ -352,6 +352,10 @@ margin-bottom: 15px;
    padding-left: 10px;
    border: none;
 
+
+}
+#message::after{
+   content: "message";
 }
 
 .focus1:focus {
@@ -360,12 +364,12 @@ margin-bottom: 15px;
 
 .send {
    height: 48px;
-   width: 100px;
+   width: 100%;
    border-radius: 5px;
    background-color: #00ff7f;
    color: white;
    font-weight: 700;
-   margin-top: 5px;
+   margin-top:    15px;
 }
 .c3{
    display: flex;
